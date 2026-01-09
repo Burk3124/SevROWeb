@@ -631,3 +631,59 @@
         display: block;
     }
 }
+
+/* RSO Slider Styles */
+.rso-slider .rso-card {
+    transition: all 0.3s ease;
+}
+
+.rso-slider .rso-card:hover {
+    transform: translateY(-8px);
+}
+
+.rso-slider .rso-card .aspect-video {
+    position: relative;
+    overflow: hidden;
+}
+
+.rso-slider .rso-card .aspect-video::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.1) 100%);
+    z-index: 1;
+}
+
+.rso-slider .slider-container {
+    position: relative;
+}
+
+.rso-slider .slider-track {
+    will-change: transform;
+}
+
+.rso-slider .slider-slide {
+    scroll-snap-align: start;
+}
+
+/* Image loading animation */
+.rso-card img[src] {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Mobile slider responsive */
+@media (max-width: 768px) {
+    .rso-slider .rso-card {
+        margin: 0 auto;
+        max-width: 320px;
+    }
+    
+    .rso-slider .slider-slide {
+        padding: 0 0.5rem;
+    }
+}

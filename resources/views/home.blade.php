@@ -195,66 +195,201 @@
             </h2>
         </div>
         
-        <!-- Carousel -->
-        <div class="carousel relative max-w-4xl mx-auto" x-data="carousel()">
-            <div class="carousel-container" x-ref="container">
-                <!-- Slide 1 -->
-                <div class="carousel-slide">
-                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 h-96 flex items-center justify-center border border-blue-200 shadow-lg">
-                        <div class="text-center max-w-sm">
-                            <!-- Место для фото "Новые друзья" -->
-                            <div class="w-24 h-24 mx-auto mb-4 bg-blue-200 rounded-full flex items-center justify-center">
-                                <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
-                                </svg>
-                                <!-- Или фото: <img src="/images/rso-friends.jpg" class="w-full h-full object-cover rounded-full"> -->
+        <!-- Modern Slider -->
+        <div class="rso-slider relative" x-data="rsoSlider()">
+            <!-- Desktop: 3 cards in row, Mobile: single slider -->
+            <div class="hidden md:grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Card 1 - Family -->
+                <div class="rso-card group cursor-pointer" @click="openModal('family')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                        <!-- Image placeholder -->
+                        <div class="aspect-video w-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center relative">
+                            <img src="{{ asset('images/rso-family.jpg') }}" 
+                                 alt="Семья РСО" 
+                                 class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300"
+                                 onload="this.style.opacity = '1'"
+                                 onerror="this.style.display = 'none'">
+                            <div class="text-center z-10">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Семья</h3>
                             </div>
-                            <h3 class="text-2xl font-bold text-blue-800 mb-3">Новые друзья</h3>
-                            <p class="text-blue-600 leading-relaxed">Знакомства на всю жизнь с единомышленниками</p>
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6">
+                            <p class="text-gray-600 leading-relaxed">Отряд - это не только работа, но и люди, которые становятся не просто друзьями, а самой настоящей семьей!</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Slide 2 -->
-                <div class="carousel-slide">
-                    <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 h-96 flex items-center justify-center border border-green-200 shadow-lg">
-                        <div class="text-center max-w-sm">
-                            <!-- Место для фото "Опыт работы" -->
-                            <div class="w-24 h-24 mx-auto mb-4 bg-green-200 rounded-full flex items-center justify-center">
-                                <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                                </svg>
+
+                <!-- Card 2 - Experience -->
+                <div class="rso-card group cursor-pointer" @click="openModal('experience')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                        <!-- Image placeholder -->
+                        <div class="aspect-video w-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center relative">
+                            <img src="{{ asset('images/rso-work.jpg') }}" 
+                                 alt="Опыт работы РСО" 
+                                 class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300"
+                                 onload="this.style.opacity = '1'"
+                                 onerror="this.style.display = 'none'">
+                            <div class="text-center z-10">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 00-2 2H8a2 2 0 00-2-2V4m8 0H8m0 0v.01M8 4.01V4M16 4v.01M16 4.01V4m0 0h.01M15.99 4H16"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Опыт</h3>
                             </div>
-                            <h3 class="text-2xl font-bold text-green-800 mb-3">Опыт работы</h3>
-                            <p class="text-green-600 leading-relaxed">Ценный опыт в различных сферах деятельности</p>
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6">
+                            <p class="text-gray-600 leading-relaxed">Получи ценный опыт работы в различных сферах, развивай профессиональные навыки и строй успешное будущее!</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Slide 3 -->
-                <div class="carousel-slide">
-                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 h-96 flex items-center justify-center border border-purple-200 shadow-lg">
-                        <div class="text-center max-w-sm">
-                            <!-- Место для фото "Путешествия" -->
-                            <div class="w-24 h-24 mx-auto mb-4 bg-purple-200 rounded-full flex items-center justify-center">
-                                <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                                </svg>
+
+                <!-- Card 3 - Adventures -->
+                <div class="rso-card group cursor-pointer" @click="openModal('adventures')">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                        <!-- Image placeholder -->
+                        <div class="aspect-video w-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center relative">
+                            <img src="{{ asset('images/rso-adventures.jpg') }}" 
+                                 alt="Приключения РСО" 
+                                 class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300"
+                                 onload="this.style.opacity = '1'"
+                                 onerror="this.style.display = 'none'">
+                            <div class="text-center z-10">
+                                <div class="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Приключения</h3>
                             </div>
-                            <h3 class="text-2xl font-bold text-purple-800 mb-3">Путешествия</h3>
-                            <p class="text-purple-600 leading-relaxed">Работа в разных регионах России</p>
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6">
+                            <p class="text-gray-600 leading-relaxed">Путешествуй по всей России, открывай новые места и живи яркими незабываемыми моментами!</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Navigation dots -->
-            <div class="carousel-dots">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <button class="carousel-dot" 
-                            :class="{ 'active': currentSlide === index }"
-                            @click="goToSlide(index)"></button>
-                </template>
+
+            <!-- Mobile Slider -->
+            <div class="md:hidden">
+                <div class="slider-container overflow-hidden">
+                    <div class="slider-track flex transition-transform duration-300 ease-in-out" 
+                         :style="`transform: translateX(-${currentSlide * 100}%)`">
+                        <!-- Mobile Slide 1 -->
+                        <div class="slider-slide w-full flex-shrink-0 px-4">
+                            <div class="rso-card">
+                                <div class="relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                                    <div class="aspect-video w-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center relative">
+                                        <img src="{{ asset('images/rso-family.jpg') }}" 
+                                             alt="Семья РСО" 
+                                             class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300"
+                                             onload="this.style.opacity = '1'"
+                                             onerror="this.style.display = 'none'">
+                                        <div class="text-center z-10">
+                                            <div class="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                                </svg>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-white mb-2">Семья</h3>
+                                        </div>
+                                    </div>
+                                    <div class="p-6">
+                                        <p class="text-gray-600 leading-relaxed">Отряд - это не только работа, но и люди, которые становятся не просто друзьями, а самой настоящей семьей!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Slide 2 -->
+                        <div class="slider-slide w-full flex-shrink-0 px-4">
+                            <div class="rso-card">
+                                <div class="relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                                    <div class="aspect-video w-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center relative">
+                                        <img src="{{ asset('images/rso-work.jpg') }}" 
+                                             alt="Опыт работы РСО" 
+                                             class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300"
+                                             onload="this.style.opacity = '1'"
+                                             onerror="this.style.display = 'none'">
+                                        <div class="text-center z-10">
+                                            <div class="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 00-2 2H8a2 2 0 00-2-2V4m8 0H8m0 0v.01M8 4.01V4M16 4v.01M16 4.01V4m0 0h.01M15.99 4H16"></path>
+                                                </svg>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-white mb-2">Опыт</h3>
+                                        </div>
+                                    </div>
+                                    <div class="p-6">
+                                        <p class="text-gray-600 leading-relaxed">Получи ценный опыт работы в различных сферах, развивай профессиональные навыки и строй успешное будущее!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Slide 3 -->
+                        <div class="slider-slide w-full flex-shrink-0 px-4">
+                            <div class="rso-card">
+                                <div class="relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                                    <div class="aspect-video w-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center relative">
+                                        <img src="{{ asset('images/rso-adventures.jpg') }}" 
+                                             alt="Приключения РСО" 
+                                             class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300"
+                                             onload="this.style.opacity = '1'"
+                                             onerror="this.style.display = 'none'">
+                                        <div class="text-center z-10">
+                                            <div class="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                                </svg>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-white mb-2">Приключения</h3>
+                                        </div>
+                                    </div>
+                                    <div class="p-6">
+                                        <p class="text-gray-600 leading-relaxed">Путешествуй по всей России, открывай новые места и живи яркими незабываемыми моментами!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Navigation -->
+                <div class="flex justify-center items-center mt-8 space-x-4">
+                    <!-- Previous Button -->
+                    <button @click="prevSlide()" 
+                            class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Dots -->
+                    <div class="flex space-x-2">
+                        <template x-for="(slide, index) in slides" :key="index">
+                            <button @click="goToSlide(index)" 
+                                    :class="currentSlide === index ? 'bg-blue-600' : 'bg-gray-300'"
+                                    class="w-3 h-3 rounded-full transition-colors"></button>
+                        </template>
+                    </div>
+                    
+                    <!-- Next Button -->
+                    <button @click="nextSlide()" 
+                            class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -416,27 +551,60 @@
 
 @push('scripts')
 <script>
-// Carousel functionality
-function carousel() {
+// RSO Slider functionality
+function rsoSlider() {
     return {
         currentSlide: 0,
-        slides: [1, 2, 3], // можно расширить
+        slides: [1, 2, 3],
+        modalOpen: false,
+        modalContent: '',
+        
+        init() {
+            // Auto-slide on mobile every 5 seconds
+            if (window.innerWidth < 768) {
+                setInterval(() => {
+                    this.nextSlide();
+                }, 5000);
+            }
+        },
         
         goToSlide(index) {
             this.currentSlide = index;
-            this.$refs.container.style.transform = `translateX(-${index * 100}%)`;
         },
         
         nextSlide() {
-            const next = (this.currentSlide + 1) % this.slides.length;
-            this.goToSlide(next);
+            this.currentSlide = (this.currentSlide + 1) % this.slides.length;
         },
         
-        init() {
-            // Auto-slide every 5 seconds
-            setInterval(() => {
-                this.nextSlide();
-            }, 5000);
+        prevSlide() {
+            this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+        },
+        
+        openModal(type) {
+            // Only on desktop
+            if (window.innerWidth >= 768) {
+                const content = {
+                    'family': {
+                        title: 'Семья',
+                        text: 'Отряд - это не только работа, но и люди, которые становятся не просто друзьями, а самой настоящей семьей! Здесь ты найдешь единомышленников, которые поддержат в любой ситуации.'
+                    },
+                    'experience': {
+                        title: 'Опыт',
+                        text: 'Получи ценный опыт работы в различных сферах, развивай профессиональные навыки и строй успешное будущее! Работай в строительстве, медицине, педагогике и IT.'
+                    },
+                    'adventures': {
+                        title: 'Приключения',
+                        text: 'Путешествуй по всей России, открывай новые места и живи яркими незабываемыми моментами! От Калининграда до Владивостока - вся страна открыта для тебя.'
+                    }
+                };
+                
+                this.modalContent = content[type];
+                this.modalOpen = true;
+            }
+        },
+        
+        closeModal() {
+            this.modalOpen = false;
         }
     }
 }
@@ -481,6 +649,43 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         SevROWeb.notifications.success('Добро пожаловать в отряды Севастополя!', 4000);
     }, 1000);
+    
+    // Image loading error handling
+    document.querySelectorAll('.rso-card img').forEach(img => {
+        img.addEventListener('error', function() {
+            this.style.display = 'none';
+        });
+    });
+    
+    // Touch/swipe support for mobile slider
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    document.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    document.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+            // Swipe left - next slide
+            const sliderElement = document.querySelector('[x-data="rsoSlider()"]');
+            if (sliderElement) {
+                sliderElement._x_dataStack[0].nextSlide();
+            }
+        }
+        if (touchEndX > touchStartX + 50) {
+            // Swipe right - previous slide
+            const sliderElement = document.querySelector('[x-data="rsoSlider()"]');
+            if (sliderElement) {
+                sliderElement._x_dataStack[0].prevSlide();
+            }
+        }
+    }
 });
 </script>
 @endpush
