@@ -195,239 +195,156 @@
             </h2>
         </div>
         
-        <!-- Modern Slider -->
-        <div class="rso-slider relative" x-data="rsoSlider()">
-            <!-- Desktop: One big card with slider, as in mockup -->
-            <div class="hidden md:block max-w-4xl mx-auto">
-                <div class="relative overflow-hidden rounded-3xl shadow-2xl bg-white">
-                    <!-- Slider container -->
-                    <div class="slider-container relative">
-                        <div class="slider-track relative">
-                            <!-- Slide 1 - Family -->
-                            <div class="slider-slide" :class="{ 'hidden': currentSlide !== 0 }">
-                                <div class="relative">
-                                    <!-- Big image area -->
-                                    <div class="aspect-[16/9] lg:aspect-[21/9] w-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center relative">
-                                        <img src="{{ asset('images/rso-family.jpg') }}" 
-                                             alt="Семья РСО" 
-                                             class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500"
-                                             onload="this.style.opacity = '1'"
-                                             onerror="this.style.display = 'none'">
-                                        <!-- Fallback content -->
-                                        <div class="text-center z-10">
-                                            <div class="w-24 h-24 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Text overlay -->
-                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-8">
-                                        <div class="max-w-md">
-                                            <h3 class="text-2xl font-bold text-white mb-3">Семья</h3>
-                                            <p class="text-white/90 leading-relaxed">Отряд - это не только работа, но и люди, которые становятся не просто друзьями, а самой настоящей семьей!</p>
-                                        </div>
-                                    </div>
+        <!-- Simple Working Slider -->
+        <div class="slider-wrapper max-w-4xl mx-auto">
+            <!-- Desktop Slider -->
+            <div class="desktop-slider hidden md:block relative">
+                <div class="slider-container bg-white rounded-3xl shadow-2xl overflow-hidden">
+                    <!-- Slides -->
+                    <div class="slide active" id="slide-0">
+                        <div class="slide-content">
+                            <div class="slide-image bg-gradient-to-br from-blue-500 to-indigo-600">
+                                <div class="slide-icon">
+                                    <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
                                 </div>
                             </div>
-
-                            <!-- Slide 2 - Experience -->
-                            <div class="slider-slide" :class="{ 'hidden': currentSlide !== 1 }">
-                                <div class="relative">
-                                    <!-- Big image area -->
-                                    <div class="aspect-[16/9] lg:aspect-[21/9] w-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center relative">
-                                        <img src="{{ asset('images/rso-work.jpg') }}" 
-                                             alt="Опыт работы РСО" 
-                                             class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500"
-                                             onload="this.style.opacity = '1'"
-                                             onerror="this.style.display = 'none'">
-                                        <!-- Fallback content -->
-                                        <div class="text-center z-10">
-                                            <div class="w-24 h-24 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 00-2 2H8a2 2 0 00-2-2V4m8 0H8m0 0v.01M8 4.01V4M16 4v.01M16 4.01V4m0 0h.01M15.99 4H16"></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Text overlay -->
-                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-8">
-                                        <div class="max-w-md">
-                                            <h3 class="text-2xl font-bold text-white mb-3">Опыт</h3>
-                                            <p class="text-white/90 leading-relaxed">Получи ценный опыт работы в различных сферах, развивай профессиональные навыки и строй успешное будущее!</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Slide 3 - Adventures -->
-                            <div class="slider-slide" :class="{ 'hidden': currentSlide !== 2 }">
-                                <div class="relative">
-                                    <!-- Big image area -->
-                                    <div class="aspect-[16/9] lg:aspect-[21/9] w-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center relative">
-                                        <img src="{{ asset('images/rso-adventures.jpg') }}" 
-                                             alt="Приключения РСО" 
-                                             class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-500"
-                                             onload="this.style.opacity = '1'"
-                                             onerror="this.style.display = 'none'">
-                                        <!-- Fallback content -->
-                                        <div class="text-center z-10">
-                                            <div class="w-24 h-24 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Text overlay -->
-                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-8">
-                                        <div class="max-w-md">
-                                            <h3 class="text-2xl font-bold text-white mb-3">Приключения</h3>
-                                            <p class="text-white/90 leading-relaxed">Путешествуй по всей России, открывай новые места и живи яркими незабываемыми моментами!</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="slide-text-bottom">
+                                <h3>Семья</h3>
+                                <p>Отряд - это не только работа, но и люди, которые становятся не просто друзьями, а самой настоящей семьей!</p>
                             </div>
                         </div>
-
-                        <!-- Navigation arrows -->
-                        <button @click="prevSlide()" 
-                                class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors z-10">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                        </button>
-                        <button @click="nextSlide()" 
-                                class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors z-10">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </button>
                     </div>
 
-                    <!-- Desktop Navigation dots -->
-                    <div class="flex justify-center items-center p-6 space-x-3">
-                        <template x-for="(slide, index) in slides" :key="index">
-                            <button @click="goToSlide(index)" 
-                                    :class="currentSlide === index ? 'bg-blue-600 scale-110' : 'bg-gray-300 hover:bg-gray-400'"
-                                    class="w-3 h-3 rounded-full transition-all duration-200"></button>
-                        </template>
+                    <div class="slide" id="slide-1">
+                        <div class="slide-content">
+                            <div class="slide-image bg-gradient-to-br from-green-500 to-emerald-600">
+                                <div class="slide-icon">
+                                    <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 00-2 2H8a2 2 0 00-2-2V4m8 0H8m0 0v.01M8 4.01V4M16 4v.01M16 4.01V4m0 0h.01M15.99 4H16"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="slide-text-bottom">
+                                <h3>Опыт</h3>
+                                <p>Получи ценный опыт работы в различных сферах, развивай профессиональные навыки и строй успешное будущее!</p>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="slide" id="slide-2">
+                        <div class="slide-content">
+                            <div class="slide-image bg-gradient-to-br from-purple-500 to-pink-600">
+                                <div class="slide-icon">
+                                    <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="slide-text-bottom">
+                                <h3>Приключения</h3>
+                                <p>Путешествуй по всей России, открывай новые места и живи яркими незабываемыми моментами!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="nav-arrow prev-arrow" id="prev-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button class="nav-arrow next-arrow" id="next-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+                
+                <!-- Dots Navigation -->
+                <div class="dots-nav">
+                    <button class="dot active" data-slide="0"></button>
+                    <button class="dot" data-slide="1"></button>
+                    <button class="dot" data-slide="2"></button>
                 </div>
             </div>
 
             <!-- Mobile Slider -->
-            <div class="md:hidden">
-                <div class="slider-container overflow-hidden">
-                    <div class="slider-track flex transition-transform duration-300 ease-in-out" 
-                         :style="`transform: translateX(-${currentSlide * 100}%)`">
-                        <!-- Mobile Slide 1 -->
-                        <div class="slider-slide w-full flex-shrink-0 px-4">
-                            <div class="rso-card">
-                                <div class="relative overflow-hidden rounded-2xl shadow-lg bg-white">
-                                    <div class="aspect-video w-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center relative">
-                                        <img src="{{ asset('images/rso-family.jpg') }}" 
-                                             alt="Семья РСО" 
-                                             class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300"
-                                             onload="this.style.opacity = '1'"
-                                             onerror="this.style.display = 'none'">
-                                        <div class="text-center z-10">
-                                            <div class="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                                </svg>
-                                            </div>
-                                            <h3 class="text-xl font-bold text-white mb-2">Семья</h3>
-                                        </div>
-                                    </div>
-                                    <div class="p-6">
-                                        <p class="text-gray-600 leading-relaxed">Отряд - это не только работа, но и люди, которые становятся не просто друзьями, а самой настоящей семьей!</p>
-                                    </div>
-                                </div>
+            <div class="mobile-slider md:hidden">
+                <div class="mobile-slides-container">
+                    <div class="mobile-slide active">
+                        <div class="mobile-card">
+                            <div class="mobile-card-image bg-gradient-to-br from-blue-500 to-indigo-600">
+                                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                                <h3>Семья</h3>
+                            </div>
+                            <div class="mobile-card-text">
+                                <p>Отряд - это не только работа, но и люди, которые становятся не просто друзьями, а самой настоящей семьей!</p>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Mobile Slide 2 -->
-                        <div class="slider-slide w-full flex-shrink-0 px-4">
-                            <div class="rso-card">
-                                <div class="relative overflow-hidden rounded-2xl shadow-lg bg-white">
-                                    <div class="aspect-video w-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center relative">
-                                        <img src="{{ asset('images/rso-work.jpg') }}" 
-                                             alt="Опыт работы РСО" 
-                                             class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300"
-                                             onload="this.style.opacity = '1'"
-                                             onerror="this.style.display = 'none'">
-                                        <div class="text-center z-10">
-                                            <div class="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 00-2 2H8a2 2 0 00-2-2V4m8 0H8m0 0v.01M8 4.01V4M16 4v.01M16 4.01V4m0 0h.01M15.99 4H16"></path>
-                                                </svg>
-                                            </div>
-                                            <h3 class="text-xl font-bold text-white mb-2">Опыт</h3>
-                                        </div>
-                                    </div>
-                                    <div class="p-6">
-                                        <p class="text-gray-600 leading-relaxed">Получи ценный опыт работы в различных сферах, развивай профессиональные навыки и строй успешное будущее!</p>
-                                    </div>
-                                </div>
+                    <div class="mobile-slide">
+                        <div class="mobile-card">
+                            <div class="mobile-card-image bg-gradient-to-br from-green-500 to-emerald-600">
+                                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 00-2 2H8a2 2 0 00-2-2V4m8 0H8m0 0v.01M8 4.01V4M16 4v.01M16 4.01V4m0 0h.01M15.99 4H16"></path>
+                                </svg>
+                                <h3>Опыт</h3>
+                            </div>
+                            <div class="mobile-card-text">
+                                <p>Получи ценный опыт работы в различных сферах, развивай профессиональные навыки и строй успешное будущее!</p>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Mobile Slide 3 -->
-                        <div class="slider-slide w-full flex-shrink-0 px-4">
-                            <div class="rso-card">
-                                <div class="relative overflow-hidden rounded-2xl shadow-lg bg-white">
-                                    <div class="aspect-video w-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center relative">
-                                        <img src="{{ asset('images/rso-adventures.jpg') }}" 
-                                             alt="Приключения РСО" 
-                                             class="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300"
-                                             onload="this.style.opacity = '1'"
-                                             onerror="this.style.display = 'none'">
-                                        <div class="text-center z-10">
-                                            <div class="w-16 h-16 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                                                </svg>
-                                            </div>
-                                            <h3 class="text-xl font-bold text-white mb-2">Приключения</h3>
-                                        </div>
-                                    </div>
-                                    <div class="p-6">
-                                        <p class="text-gray-600 leading-relaxed">Путешествуй по всей России, открывай новые места и живи яркими незабываемыми моментами!</p>
-                                    </div>
-                                </div>
+                    <div class="mobile-slide">
+                        <div class="mobile-card">
+                            <div class="mobile-card-image bg-gradient-to-br from-purple-500 to-pink-600">
+                                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                </svg>
+                                <h3>Приключения</h3>
+                            </div>
+                            <div class="mobile-card-text">
+                                <p>Путешествуй по всей России, открывай новые места и живи яркими незабываемыми моментами!</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Mobile Navigation -->
-                <div class="flex justify-center items-center mt-8 space-x-4">
-                    <!-- Previous Button -->
-                    <button @click="prevSlide()" 
-                            class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="mobile-nav">
+                    <button class="mobile-nav-btn" id="mobile-prev">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
                     
-                    <!-- Dots -->
-                    <div class="flex space-x-2">
-                        <template x-for="(slide, index) in slides" :key="index">
-                            <button @click="goToSlide(index)" 
-                                    :class="currentSlide === index ? 'bg-blue-600' : 'bg-gray-300'"
-                                    class="w-3 h-3 rounded-full transition-colors"></button>
-                        </template>
+                    <div class="mobile-dots">
+                        <button class="mobile-dot active" data-slide="0"></button>
+                        <button class="mobile-dot" data-slide="1"></button>
+                        <button class="mobile-dot" data-slide="2"></button>
                     </div>
                     
-                    <!-- Next Button -->
-                    <button @click="nextSlide()" 
-                            class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button class="mobile-nav-btn" id="mobile-next">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </button>
+                </div>
+                
+                <!-- Mobile Progress -->
+                <div class="mobile-progress-container">
+                    <div class="mobile-progress-bar" id="mobile-progress"></div>
                 </div>
             </div>
         </div>
@@ -590,72 +507,268 @@
 
 @push('scripts')
 <script>
-// RSO Slider functionality
-function rsoSlider() {
-    return {
-        currentSlide: 0,
-        slides: [1, 2, 3],
-        autoSlideInterval: null,
+// Simple Working Slider
+class SimpleSlider {
+    constructor() {
+        this.currentSlide = 0;
+        this.totalSlides = 3;
+        this.autoSlideInterval = null;
+        this.progressInterval = null;
+        this.slideDuration = 6000; // 6 seconds
+        this.isPaused = false;
+        this.isMobile = window.innerWidth < 768;
         
-        init() {
-            // Auto-slide every 6 seconds for both desktop and mobile
-            this.startAutoSlide();
+        this.init();
+    }
+    
+    init() {
+        console.log('SimpleSlider initialized');
+        
+        // Set up event listeners
+        this.setupEventListeners();
+        
+        // Start auto slide
+        this.startAutoSlide();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            this.isMobile = window.innerWidth < 768;
+        });
+    }
+    
+    setupEventListeners() {
+        // Desktop navigation
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const dots = document.querySelectorAll('.dot');
+        
+        if (prevBtn) prevBtn.addEventListener('click', () => this.prevSlide());
+        if (nextBtn) nextBtn.addEventListener('click', () => this.nextSlide());
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Mobile navigation
+        const mobilePrevBtn = document.getElementById('mobile-prev');
+        const mobileNextBtn = document.getElementById('mobile-next');
+        const mobileDots = document.querySelectorAll('.mobile-dot');
+        
+        if (mobilePrevBtn) mobilePrevBtn.addEventListener('click', () => this.prevSlide());
+        if (mobileNextBtn) mobileNextBtn.addEventListener('click', () => this.nextSlide());
+        
+        mobileDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Touch/swipe support
+        this.setupTouchEvents();
+        
+        // Pause on hover (desktop only) with improved logic
+        const slider = document.querySelector('.slider-wrapper');
+        if (slider && window.innerWidth >= 768) {
+            let hoverTimeout;
             
-            // Pause on hover (desktop only)
-            if (window.innerWidth >= 768) {
-                this.$el.addEventListener('mouseenter', () => this.stopAutoSlide());
-                this.$el.addEventListener('mouseleave', () => this.startAutoSlide());
-            }
-        },
-        
-        startAutoSlide() {
-            this.stopAutoSlide(); // Clear any existing interval
-            this.autoSlideInterval = setInterval(() => {
-                this.nextSlide();
-            }, 6000);
-        },
-        
-        stopAutoSlide() {
-            if (this.autoSlideInterval) {
-                clearInterval(this.autoSlideInterval);
-                this.autoSlideInterval = null;
-            }
-        },
-        
-        goToSlide(index) {
-            this.currentSlide = index;
-            this.startAutoSlide(); // Restart auto-slide after manual navigation
-        },
-        
-        nextSlide() {
-            this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-            this.startAutoSlide(); // Restart auto-slide after manual navigation
-        },
-        
-        prevSlide() {
-            this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
-            this.startAutoSlide(); // Restart auto-slide after manual navigation
+            slider.addEventListener('mouseenter', (e) => {
+                // Only pause if we're actually hovering over the slider content
+                if (e.target.closest('.slider-container') || e.target.closest('.nav-arrow') || e.target.closest('.dots-nav')) {
+                    clearTimeout(hoverTimeout);
+                    this.pauseAutoSlide();
+                }
+            });
+            
+            slider.addEventListener('mouseleave', (e) => {
+                // Add small delay to prevent flickering during scroll
+                hoverTimeout = setTimeout(() => {
+                    this.resumeAutoSlide();
+                }, 200);
+            });
+            
+            // Ensure auto slide continues during scroll
+            window.addEventListener('scroll', () => {
+                if (!this.isPaused) {
+                    // Keep running if not manually paused
+                    return;
+                }
+                // Resume if paused due to scroll interference
+                clearTimeout(hoverTimeout);
+                hoverTimeout = setTimeout(() => {
+                    if (this.isPaused) {
+                        this.resumeAutoSlide();
+                    }
+                }, 500);
+            }, { passive: true });
         }
+    }
+    
+    setupTouchEvents() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        const mobileSlider = document.querySelector('.mobile-slides-container');
+        if (mobileSlider) {
+            mobileSlider.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+            }, { passive: true });
+            
+            mobileSlider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].clientX;
+                const swipeDistance = touchStartX - touchEndX;
+                const swipeThreshold = 50;
+                
+                if (Math.abs(swipeDistance) > swipeThreshold) {
+                    if (swipeDistance > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }, { passive: true });
+        }
+    }
+    
+    startAutoSlide() {
+        this.stopAutoSlide();
+        this.isPaused = false;
+        console.log('Starting auto slide');
+        this.runProgressBar();
+    }
+    
+    stopAutoSlide() {
+        if (this.progressInterval) {
+            clearInterval(this.progressInterval);
+            this.progressInterval = null;
+        }
+        this.resetProgressBar();
+    }
+    
+    pauseAutoSlide() {
+        this.isPaused = true;
+        if (this.progressInterval) {
+            clearInterval(this.progressInterval);
+        }
+    }
+    
+    resumeAutoSlide() {
+        if (this.isPaused) {
+            this.isPaused = false;
+            this.runProgressBar();
+        }
+    }
+    
+    runProgressBar() {
+        if (this.isPaused) return;
+        
+        let progress = 0;
+        const increment = 100 / (this.slideDuration / 100);
+        
+        this.progressInterval = setInterval(() => {
+            if (this.isPaused) return;
+            
+            progress += increment;
+            this.updateProgressBar(progress);
+            
+            if (progress >= 100) {
+                progress = 0;
+                this.nextSlideAuto();
+            }
+        }, 100);
+    }
+    
+    updateProgressBar(progress) {
+        const desktopProgressBar = document.getElementById('progress-bar');
+        const mobileProgressBar = document.getElementById('mobile-progress');
+        
+        if (desktopProgressBar) {
+            desktopProgressBar.style.width = `${progress}%`;
+        }
+        if (mobileProgressBar) {
+            mobileProgressBar.style.width = `${progress}%`;
+        }
+    }
+    
+    resetProgressBar() {
+        this.updateProgressBar(0);
+    }
+    
+    nextSlideAuto() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.updateSlideDisplay();
+        console.log('Auto next slide:', this.currentSlide);
+    }
+    
+    nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.updateSlideDisplay();
+        this.restartAutoSlide();
+        console.log('Manual next slide:', this.currentSlide);
+    }
+    
+    prevSlide() {
+        this.currentSlide = this.currentSlide === 0 ? this.totalSlides - 1 : this.currentSlide - 1;
+        this.updateSlideDisplay();
+        this.restartAutoSlide();
+        console.log('Manual prev slide:', this.currentSlide);
+    }
+    
+    goToSlide(index) {
+        this.currentSlide = index;
+        this.updateSlideDisplay();
+        this.restartAutoSlide();
+        console.log('Go to slide:', this.currentSlide);
+    }
+    
+    restartAutoSlide() {
+        this.stopAutoSlide();
+        setTimeout(() => {
+            this.startAutoSlide();
+        }, 100);
+    }
+    
+    updateSlideDisplay() {
+        // Update desktop slides
+        const desktopSlides = document.querySelectorAll('.desktop-slider .slide');
+        desktopSlides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === this.currentSlide);
+        });
+        
+        // Update mobile slides
+        const mobileSlides = document.querySelectorAll('.mobile-slide');
+        mobileSlides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === this.currentSlide);
+        });
+        
+        // Update desktop dots
+        const desktopDots = document.querySelectorAll('.dot');
+        desktopDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentSlide);
+        });
+        
+        // Update mobile dots
+        const mobileDots = document.querySelectorAll('.mobile-dot');
+        mobileDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentSlide);
+        });
     }
 }
 
-// News slider functionality
-function newsSlider() {
-    return {
-        init() {
-            console.log('News slider initialized');
-        }
-    }
-}
-
+// Initialize slider when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the slider
+    const slider = new SimpleSlider();
+    
+    // Store reference globally for debugging
+    window.slider = slider;
+    
+    // Other existing code...
+    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const offsetTop = target.offsetTop - 80; // учитываем высоту навбара
+                const offsetTop = target.offsetTop - 80;
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -677,45 +790,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Welcome message
     setTimeout(() => {
-        SevROWeb.notifications.success('Добро пожаловать в отряды Севастополя!', 4000);
+        if (typeof SevROWeb !== 'undefined' && SevROWeb.notifications) {
+            SevROWeb.notifications.success('Добро пожаловать в отряды Севастополя!', 4000);
+        }
     }, 1000);
-    
-    // Image loading error handling
-    document.querySelectorAll('.rso-card img').forEach(img => {
-        img.addEventListener('error', function() {
-            this.style.display = 'none';
-        });
-    });
-    
-    // Touch/swipe support for mobile slider
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    document.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-    
-    document.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-    
-    function handleSwipe() {
-        if (touchEndX < touchStartX - 50) {
-            // Swipe left - next slide
-            const sliderElement = document.querySelector('[x-data="rsoSlider()"]');
-            if (sliderElement) {
-                sliderElement._x_dataStack[0].nextSlide();
-            }
-        }
-        if (touchEndX > touchStartX + 50) {
-            // Swipe right - previous slide
-            const sliderElement = document.querySelector('[x-data="rsoSlider()"]');
-            if (sliderElement) {
-                sliderElement._x_dataStack[0].prevSlide();
-            }
-        }
-    }
 });
 </script>
 @endpush
