@@ -126,6 +126,24 @@
             font-size: 1.8em;
             font-weight: bold;
             color: #667eea;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #764ba2;
         }
 
         .subtitle {
@@ -135,6 +153,11 @@
         }
 
         @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
             h1 {
                 font-size: 2em;
             }
@@ -152,7 +175,12 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo">РСО Севастополь</div>
+            <a href="/" class="logo">РСО Севастополь</a>
+            <nav>
+                <a href="/">Главная</a>
+                <a href="/about">О нас</a>
+                <a href="/join">Вступить</a>
+            </nav>
         </div>
     </header>
 
@@ -160,8 +188,8 @@
         <div class="hero">
             <h1>Российские Студенческие Отряды Севастополя</h1>
             <p class="subtitle">Объединение студентов для трудовой деятельности, развития и социального роста</p>
-            <a href="#about" class="btn">Узнать больше</a>
-            <a href="#join" class="btn btn-secondary">Вступить в РСО</a>
+            <a href="/about" class="btn">Узнать больше</a>
+            <a href="/join" class="btn btn-secondary">Вступить в РСО</a>
         </div>
 
         <div class="card" id="about">
@@ -209,7 +237,7 @@
             <p>Email: <a href="mailto:rso-sevastopol@example.com">rso-sevastopol@example.com</a></p>
             <p>Телефон: +7 (XXX) XXX-XX-XX</p>
             
-            <a href="#" class="btn">Подать заявку</a>
+            <a href="/join" class="btn">Подать заявку</a>
         </div>
 
         <div class="card">
