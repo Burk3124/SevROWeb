@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'РСО Севастополь - @yield('title', 'Главная')')</title>
+    <title>@yield('title', 'РСО Севастополь')</title>
     <meta name="description" content="@yield('description', 'Российские студенческие отряды Севастополя - с нами ты можешь больше!')">
 
     <!-- Favicon -->
