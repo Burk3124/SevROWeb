@@ -1,0 +1,633 @@
+@import 'tailwindcss';
+
+/* Подключение кастомных шрифтов */
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/Gotham-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-heading: 'Gotham', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    
+    /* Цветовая схема под макет РСО Севастополь */
+    --color-primary-50: oklch(.98 .01 220);
+    --color-primary-100: oklch(.94 .03 220);
+    --color-primary-200: oklch(.87 .05 220);
+    --color-primary-300: oklch(.77 .08 220);
+    --color-primary-400: oklch(.67 .12 220);
+    --color-primary-500: oklch(.57 .15 220);
+    --color-primary-600: oklch(.47 .18 220);
+    --color-primary-700: oklch(.37 .16 220);
+    --color-primary-800: oklch(.27 .14 220);
+    --color-primary-900: oklch(.17 .12 220);
+    --color-primary-950: oklch(.12 .10 220);
+    
+    /* Дополнительные цвета */
+    --color-navy-50: oklch(.96 .01 210);
+    --color-navy-100: oklch(.92 .02 210);
+    --color-navy-200: oklch(.85 .04 210);
+    --color-navy-300: oklch(.75 .06 210);
+    --color-navy-400: oklch(.65 .08 210);
+    --color-navy-500: oklch(.45 .12 210);
+    --color-navy-600: oklch(.35 .14 210);
+    --color-navy-700: oklch(.25 .16 210);
+    --color-navy-800: oklch(.18 .14 210);
+    --color-navy-900: oklch(.12 .12 210);
+    --color-navy-950: oklch(.08 .10 210);
+    
+    /* Голубой для пошаговой инструкции */
+    --color-sky-light: oklch(.85 .08 220);
+    --color-sky-medium: oklch(.75 .12 220);
+    --color-sky-dark: oklch(.65 .16 220);
+}
+
+/* Alpine.js x-cloak для скрытия элементов до инициализации */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Мобильное меню скрыто по умолчанию */
+.mobile-menu-hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+    
+    .mobile-menu.show {
+        display: block;
+    }
+}
+
+/* Навигация с динамическим фоном */
+.navbar-transparent {
+    background: rgba(14, 165, 233, 0);
+    backdrop-filter: blur(0px);
+    box-shadow: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-solid {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.95) 0%, rgba(2, 132, 199, 0.95) 25%, rgba(3, 105, 161, 0.95) 50%, rgba(59, 130, 246, 0.95) 75%, rgba(96, 165, 250, 0.95) 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Плавный переход для навигации */
+#navbar {
+    transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Дополнительные стили для приложения */
+.rso-gradient {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 25%, #0369a1 50%, #3b82f6 75%, #60a5fa 100%);
+}
+
+/* Класс для заголовков с Gotham шрифтом */
+.font-heading {
+    font-family: 'Gotham', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-weight: bold;
+}
+
+/* Основной текст с Montserrat */
+.font-body {
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+}
+
+.rso-overlay {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(49, 46, 129, 0.8) 50%, rgba(30, 27, 75, 0.9) 100%);
+}
+
+/* Анимированное облако тегов - 3 линии */
+.tag-cloud-container {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 2rem 0;
+    background: rgba(96, 165, 250, 0.03);
+}
+
+.tag-cloud-scroll {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.tag-cloud-track {
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    align-items: center;
+}
+
+/* Разные скорости для каждой линии */
+.tag-line-1 {
+    animation: scrollTags 25s linear infinite;
+}
+
+.tag-line-2 {
+    animation: scrollTagsReverse 35s linear infinite;
+    animation-direction: reverse;
+}
+
+.tag-line-3 {
+    animation: scrollTags 30s linear infinite;
+}
+
+/* Анимация движения тегов */
+@keyframes scrollTags {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollTagsReverse {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Бесконечная анимация без пауз */
+
+/* Рваные края - адаптивные с более драматичным эффектом */
+.torn-paper-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: white;
+    z-index: 15;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 97% 45%, 93% 95%, 89% 25%, 85% 90%, 80% 35%, 75% 85%, 71% 15%, 67% 95%, 62% 40%, 58% 75%, 53% 20%, 49% 90%, 44% 50%, 40% 70%, 35% 30%, 31% 85%, 26% 45%, 22% 95%, 17% 25%, 13% 80%, 8% 35%, 4% 90%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 97% 45%, 93% 95%, 89% 25%, 85% 90%, 80% 35%, 75% 85%, 71% 15%, 67% 95%, 62% 40%, 58% 75%, 53% 20%, 49% 90%, 44% 50%, 40% 70%, 35% 30%, 31% 85%, 26% 45%, 22% 95%, 17% 25%, 13% 80%, 8% 35%, 4% 90%, 0 100%);
+}
+
+.torn-paper-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: white;
+    z-index: 15;
+    -webkit-clip-path: polygon(0 15%, 4% 55%, 8% 5%, 13% 65%, 17% 20%, 22% 75%, 26% 10%, 31% 85%, 35% 25%, 40% 90%, 44% 35%, 49% 70%, 53% 15%, 58% 80%, 62% 30%, 67% 95%, 71% 40%, 75% 85%, 80% 20%, 85% 75%, 89% 35%, 93% 90%, 97% 25%, 100% 70%, 100% 100%, 0 100%);
+    clip-path: polygon(0 15%, 4% 55%, 8% 5%, 13% 65%, 17% 20%, 22% 75%, 26% 10%, 31% 85%, 35% 25%, 40% 90%, 44% 35%, 49% 70%, 53% 15%, 58% 80%, 62% 30%, 67% 95%, 71% 40%, 75% 85%, 80% 20%, 85% 75%, 89% 35%, 93% 90%, 97% 25%, 100% 70%, 100% 100%, 0 100%);
+}
+
+/* Десктоп - большие экраны */
+@media (min-width: 1200px) {
+    .torn-paper-top,
+    .torn-paper-bottom {
+        height: 30px;
+    }
+}
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .torn-paper-top,
+    .torn-paper-bottom {
+        height: 20px;
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .torn-paper-top,
+    .torn-paper-bottom {
+        height: 15px;
+        z-index: 5;
+    }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
+    .torn-paper-top,
+    .torn-paper-bottom {
+        height: 10px;
+        z-index: 5;
+    }
+}
+
+/* RSO секция - полностью адаптивная */
+.rso-info-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.rso-bg-responsive {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Контейнер для фото */
+.rso-photo-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Заголовок */
+.rso-title {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+/* Основной текст */
+.rso-content {
+    font-size: 1.125rem;
+}
+
+/* Выделенная фраза */
+.rso-highlight {
+    font-size: 1.25rem;
+}
+
+/* Десктоп - большие экраны */
+@media (min-width: 1200px) {
+    .rso-photo-container {
+        max-width: 600px;
+    }
+    
+    .rso-title {
+        font-size: 4rem;
+    }
+    
+    .rso-content {
+        font-size: 1.25rem;
+    }
+    
+    .rso-highlight {
+        font-size: 1.5rem;
+    }
+}
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .rso-info-section {
+        min-height: 90vh;
+        padding: 2rem 0;
+    }
+    
+    .rso-bg-responsive {
+        background-attachment: scroll;
+    }
+    
+    .rso-photo-container {
+        max-width: 400px;
+    }
+    
+    .rso-title {
+        font-size: 2.5rem;
+    }
+    
+    .rso-content {
+        font-size: 1rem;
+    }
+    
+    .rso-highlight {
+        font-size: 1.125rem;
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .rso-info-section {
+        min-height: auto;
+        padding: 3rem 0;
+    }
+    
+    .rso-photo-container {
+        max-width: 350px;
+        margin-bottom: 2rem;
+    }
+    
+    .rso-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .rso-content {
+        font-size: 0.95rem;
+    }
+    
+    .rso-content br {
+        display: none;
+    }
+    
+    .rso-highlight {
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
+    .rso-info-section {
+        padding: 2rem 0;
+    }
+    
+    .rso-photo-container {
+        max-width: 280px;
+    }
+    
+    .rso-title {
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+    
+    .rso-content {
+        font-size: 0.9rem;
+    }
+    
+    .rso-highlight {
+        font-size: 0.95rem;
+    }
+}
+
+.tag-item {
+    background: transparent;
+    border: 2px solid #60a5fa;
+    color: #1e40af;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 500;
+    min-width: auto;
+    text-align: center;
+    white-space: nowrap;
+    cursor: default;
+    user-select: none;
+}
+
+.step-card {
+    @apply bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2;
+    border-top: 4px solid #3b82f6;
+}
+
+.step-number {
+    @apply w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 mx-auto;
+}
+
+/* Карусель/слайдер стили */
+.carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-dot.active {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* News cards */
+.news-card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+}
+
+.news-card img {
+    @apply w-full h-48 object-cover;
+}
+
+/* Волнистые разделители */
+.wave-divider {
+    position: relative;
+    background: #ffffff;
+}
+
+.wave-divider::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+    background-size: cover;
+}
+
+.btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105;
+}
+
+.btn-secondary {
+    @apply bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30 px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+}
+
+.card {
+    @apply bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 rounded-lg;
+}
+
+/* Анимации для уведомлений */
+.toast-enter {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.toast-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 0.3s ease-out;
+}
+
+.toast-exit {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease-in;
+}
+
+/* Wave divider styles */
+.wave-divider::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="white"/></svg>') no-repeat;
+    background-size: cover;
+}
+
+/* News card styles */
+.news-card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-200 hover:shadow-xl hover:-translate-y-1;
+}
+
+/* Button secondary style */
+.btn-secondary {
+    @apply border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-900 transition-all duration-200;
+}
+
+/* Torn paper effect with custom image */
+.torn-paper-bottom {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-image: url('/images/PapperHero.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 20;
+    transform: translateY(0);
+}
+
+/* Paper transition for section breaks */
+.paper-transition {
+    background-image: url('/images/PapperHero.png');
+    background-repeat: repeat-x;
+    background-size: cover;
+    background-position: top center;
+    height: 80px;
+    width: 100%;
+    margin: -2px 0 -2px 0;
+    position: relative;
+    z-index: 15;
+}
+
+/* Hero section specific styles */
+.hero-section {
+    margin-bottom: 0;
+}
+
+/* Content section directly after hero */
+.content-section-first {
+    margin-top: 0;
+    padding-top: 5rem;
+}
+
+/* Responsive adjustments for torn paper */
+@media (max-width: 768px) {
+    .torn-paper-bottom {
+        height: 60px;
+        bottom: -8px;
+    }
+    
+    .paper-transition {
+        height: 40px;
+        margin: -2px 0 -2px 0;
+    }
+    
+    .content-section-first {
+        padding-top: 3rem;
+    }
+    
+    /* Мобильная навигация */
+    #navbar {
+        padding: 0.5rem 1rem;
+    }
+    
+    #navbar .h-20 {
+        height: 4rem;
+    }
+    
+    /* Мобильные шрифты Hero */
+    .hero-section h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-section p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Мобильные отступы */
+    .hero-section {
+        padding: 2rem 1rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .torn-paper-bottom {
+        height: 50px;
+        bottom: -6px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+    
+    .hero-section p {
+        font-size: 1.125rem;
+    }
+    
+    /* Уменьшаем логотип */
+    #navbar img {
+        height: 2.5rem;
+    }
+    
+    /* Мобильное меню */
+    .mobile-menu-button {
+        display: block;
+    }
+}
