@@ -242,6 +242,7 @@
 
             <div class="contact-info">
                 <h2>Контакты для вступления</h2>
+                <!-- TODO: Replace with actual contact information before production deployment -->
                 <p><strong>Email:</strong> <a href="mailto:join@rso-sevastopol.ru">join@rso-sevastopol.ru</a></p>
                 <p><strong>Телефон:</strong> +7 (XXX) XXX-XX-XX</p>
                 <p><strong>Адрес штаба:</strong> г. Севастополь, ул. Примерная, д. 1</p>

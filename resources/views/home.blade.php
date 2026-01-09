@@ -236,6 +236,7 @@
             <p style="margin-top: 20px;"><strong>Контакты:</strong></p>
             <p>Email: <a href="mailto:rso-sevastopol@example.com">rso-sevastopol@example.com</a></p>
             <p>Телефон: +7 (XXX) XXX-XX-XX</p>
+            <!-- TODO: Replace with actual contact information before production deployment -->
             
             <a href="/join" class="btn">Подать заявку</a>
         </div>
