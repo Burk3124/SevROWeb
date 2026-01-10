@@ -1,0 +1,495 @@
+/* Directions Page Specific Styles */
+
+/* Плавная прокрутка для якорей */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hero Section Specific */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(49, 46, 129, 0.1) 50%, rgba(30, 27, 75, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Directions Grid Container */
+.directions-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+/* Grid Layout for different screen sizes */
+@media (min-width: 1200px) {
+    .directions-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .directions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .directions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Directions Cards */
+.direction-card {
+    border: 1px solid rgba(229, 231, 235, 0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.direction-card:hover {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.direction-card h3 {
+    color: inherit !important;
+}
+
+.direction-card {
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.direction-card:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    background-color: rgba(248, 250, 252, 1);
+    transform: translateY(-4px);
+}
+
+.direction-card img {
+    transition: transform 0.3s ease;
+}
+
+.direction-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Pedagogy Section - Компактная красивая секция */
+.pedagogy-section {
+    position: relative;
+    height: 800px;
+    width: 100%;
+    overflow: hidden; /* Обрезаем изображение, чтобы оно не выходило за границы */
+}
+
+.pedagogy-section .absolute.inset-0 {
+    background-attachment: fixed !important;
+}
+
+.paper-top-effect {
+    position: absolute;
+    height: 198px; /* 152px * 1.3 = 198px (+30%) */
+    background-image: url('/images/PaperTop.png');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    top: -50px;
+    left: 0;
+    right: 0;
+    z-index: 30;
+}
+
+.paper-bottom-effect {
+    position: absolute;
+    height: 198px; /* 152px * 1.3 = 198px (+30%) */
+    background-image: url('/images/PapperHero.png');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    z-index: 30;
+}
+
+/* Mobile paper effects - no gaps */
+@media (max-width: 768px) {
+    .pedagogy-section {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        border: none !important;
+    }
+    
+    .paper-top-effect {
+        top: -30px !important;
+        margin-top: 0 !important;
+        transform: translateY(0) !important;
+    }
+    
+    .paper-bottom-effect {
+        bottom: -50px !important;
+        margin-bottom: 0 !important;
+        transform: translateY(0) !important;
+    }
+    
+    /* Remove any section gaps */
+    section {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    section + section {
+        margin-top: 0 !important;
+        border-top: none !important;
+    }
+    
+    /* Убираем все возможные зазоры и границы только в области контента */
+    .pedagogy-section *:not(#navbar):not(#navbar *) {
+        margin: 0 !important;
+        border: none !important;
+    }
+    
+    .pedagogy-section,
+    .pedagogy-section::before,
+    .pedagogy-section::after,
+    .hero-section,
+    .directions-section {
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Убираем зазоры между блоками */
+    .pedagogy-section {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        border-top: none !important;
+        border-bottom: none !important;
+    }
+    
+    body, html {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+.pedagogy-image-large {
+    width: 673px !important; /* 585px * 1.15 = 673px (+15%) */
+    height: 835px !important; /* 726px * 1.15 = 835px (+15%) */
+    position: relative;
+    z-index: 40;
+    margin-bottom: -80px;
+    margin-top: 60px; /* 50px * 1.2 = 60px (+20% вниз) */
+    margin-left: -48px;
+    object-fit: contain !important;
+}
+
+/* Опускаем текстовый блок */
+.pedagogy-section .flex-1.pr-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px; /* 126px * 0.7 = 88px (поднимаем еще на 30%) */
+}
+
+.pedagogy-title {
+    font-family: 'Gotham', sans-serif;
+    margin-bottom: 2rem !important; /* Увеличиваем отступ между заголовком и текстом */
+}
+
+.pedagogy-content {
+    opacity: 0.95;
+}
+
+.pedagogy-list p {
+    opacity: 0.9;
+}
+
+.pedagogy-highlight {
+    opacity: 0.98;
+    font-weight: 500;
+}
+
+/* Адаптивные стили для directions */
+@media (max-width: 1024px) {
+    /* Hero Section */
+    .hero-section {
+        padding: 4rem 1rem;
+        min-height: 70vh;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.75rem;
+        line-height: 1.2;
+    }
+    
+    .hero-section p {
+        font-size: 1.125rem;
+    }
+    
+    /* Directions Grid */
+    .direction-card {
+        padding: 2rem;
+    }
+    
+    .direction-card .w-24 {
+        width: 90px;
+        height: 90px;
+    }
+    
+    /* Pedagogy Section */
+    .pedagogy-section {
+        height: auto;
+        min-height: 600px;
+        padding: 3rem 0;
+    }
+    
+    .pedagogy-section .absolute.inset-0 {
+        background-attachment: scroll !important;
+    }
+    
+    .pedagogy-section .items-center.justify-between {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .pedagogy-section .flex-1.pr-4 {
+        order: 1;
+        padding-top: 0;
+        text-align: center;
+        max-width: 100%;
+        padding-right: 0;
+    }
+    
+    .pedagogy-section .flex-shrink-0 {
+        order: 2;
+        align-self: center;
+        overflow: hidden; /* Обрезаем изображение на десктопе */
+    }
+    
+    .pedagogy-title {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .pedagogy-content {
+        font-size: 1rem;
+        text-align: left;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .pedagogy-image-large {
+        width: 400px;
+        height: 480px;
+        margin: 0 auto;
+    }
+    
+    .paper-top-effect,
+    .paper-bottom-effect {
+        height: 180px; /* 100px * 1.3 = 130px (+30%) */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Hero Section */
+    .hero-section {
+        padding: 3.3rem 1rem; /* 3rem * 1.1 = 3.3rem (опускаем на 10%) */
+        min-height: 60vh;
+        text-align: center;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.25rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-section .btn-primary,
+    .hero-section .btn-secondary {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+    
+    /* Directions Grid */
+    .direction-card {
+        padding: 1.5rem;
+        text-align: center;
+    }
+    
+    .direction-card h3 {
+        font-size: 1.125rem;
+        line-height: 1.4;
+    }
+    
+    .direction-card .w-24 {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 1rem;
+    }
+    
+    /* Pedagogy Section - Мобильная версия с текстом сверху */
+    .pedagogy-section {
+        height: auto;
+        min-height: 650px;
+        padding: 0 1rem;
+        margin: 0;
+    }
+    
+    .pedagogy-section .items-center.justify-between {
+        flex-direction: column !important;
+        gap: 2rem;
+        align-items: center !important;
+        justify-content: flex-start !important;
+    }
+    
+    .pedagogy-section .flex-1.pr-4 {
+        order: 1 !important;
+        padding-top: 5.70rem; /* 3.80rem * 1.5 = 5.70rem (опускаем на 50%) */
+        text-align: center;
+        max-width: 100% !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+        flex: none !important;
+    }
+    
+    .pedagogy-section .flex-shrink-0 {
+        order: 2 !important;
+        align-self: center;
+        flex-shrink: 0 !important;
+        display: block !important;
+    }
+    
+    .pedagogy-title {
+        font-size: 1.875rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .pedagogy-content {
+        font-size: 0.95rem;
+        text-align: left;
+        max-width: 100%;
+    }
+    
+    .pedagogy-list {
+        text-align: left;
+        margin: 1rem 0;
+    }
+    
+    .pedagogy-image-large {
+        width: 420px !important;
+        height: 504px !important;
+        margin: 1rem auto 0 !important;
+        object-fit: contain !important;
+        display: block !important;
+        position: relative !important;
+        z-index: 40 !important;
+    }
+    
+    .paper-top-effect,
+    .paper-bottom-effect {
+        height: 180px; /* 110px * 1.3 = 143px (+30%) */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Hero Section */
+    .hero-section {
+        padding: 2.2rem 1rem; /* 2rem * 1.1 = 2.2rem (опускаем на 10%) */
+        min-height: 50vh;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.875rem;
+        line-height: 1.1;
+    }
+    
+    .hero-section p {
+        font-size: 0.9rem;
+    }
+    
+    .hero-section .btn-primary,
+    .hero-section .btn-secondary {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+        display: block;
+        width: 100%;
+        max-width: 200px;
+        margin: 0.5rem auto;
+    }
+    
+    /* Directions Grid */
+    .direction-card {
+        padding: 1.25rem;
+    }
+    
+    .direction-card .w-24 {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .direction-card h3 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+    
+    /* Pedagogy Section */
+    .pedagogy-section {
+        padding: 0 1rem;
+        min-height: 600px;
+        margin: 0;
+    }
+    
+    .pedagogy-section .flex-1.pr-4 {
+        padding-top: 4.31rem; /* 2.87rem * 1.5 = 4.31rem (опускаем на 50%) */
+    }
+    
+    .pedagogy-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .pedagogy-content {
+        font-size: 0.875rem;
+    }
+    
+    .pedagogy-image-large {
+        width: 360px !important;
+        height: 432px !important;
+        margin: 1rem auto 0 !important;
+        object-fit: contain !important;
+    }
+    
+    .paper-top-effect,
+    .paper-bottom-effect {
+        height: 150px; /* 91px * 1.3 = 118px (+30%) */
+    }
+}

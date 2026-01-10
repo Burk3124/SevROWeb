@@ -1,11 +1,20 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-DHNPfw5V.css",
+    "file": "assets/app-Cs3SnUuY.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
     "names": [
       "app.css"
+    ]
+  },
+  "resources/css/directions.css": {
+    "file": "assets/directions-BA6ggInU.css",
+    "src": "resources/css/directions.css",
+    "isEntry": true,
+    "name": "directions",
+    "names": [
+      "directions.css"
     ]
   },
   "resources/js/app.js": {

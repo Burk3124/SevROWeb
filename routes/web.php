@@ -7,6 +7,11 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+// Направления деятельности
+Route::get('/directions', function () {
+    return view('directions');
+})->name('directions');
+
 // Временные маршруты для навигации (будут заменены позже)
 Route::get('/login', function () {
     return view('auth.login');

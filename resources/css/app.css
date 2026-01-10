@@ -187,29 +187,31 @@
 
 /* Бесконечная анимация без пауз */
 
-/* Рваные края - адаптивные с более драматичным эффектом */
+/* Paper effects using dedicated images */
 .torn-paper-top {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 20px;
-    background: white;
-    z-index: 15;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 97% 45%, 93% 95%, 89% 25%, 85% 90%, 80% 35%, 75% 85%, 71% 15%, 67% 95%, 62% 40%, 58% 75%, 53% 20%, 49% 90%, 44% 50%, 40% 70%, 35% 30%, 31% 85%, 26% 45%, 22% 95%, 17% 25%, 13% 80%, 8% 35%, 4% 90%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 97% 45%, 93% 95%, 89% 25%, 85% 90%, 80% 35%, 75% 85%, 71% 15%, 67% 95%, 62% 40%, 58% 75%, 53% 20%, 49% 90%, 44% 50%, 40% 70%, 35% 30%, 31% 85%, 26% 45%, 22% 95%, 17% 25%, 13% 80%, 8% 35%, 4% 90%, 0 100%);
+    height: 80px;
+    background-image: url('/images/PaperTop.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 20;
 }
 
 .torn-paper-bottom {
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
     left: 0;
     width: 100%;
-    height: 20px;
-    background: white;
-    z-index: 15;
-    -webkit-clip-path: polygon(0 15%, 4% 55%, 8% 5%, 13% 65%, 17% 20%, 22% 75%, 26% 10%, 31% 85%, 35% 25%, 40% 90%, 44% 35%, 49% 70%, 53% 15%, 58% 80%, 62% 30%, 67% 95%, 71% 40%, 75% 85%, 80% 20%, 85% 75%, 89% 35%, 93% 90%, 97% 25%, 100% 70%, 100% 100%, 0 100%);
-    clip-path: polygon(0 15%, 4% 55%, 8% 5%, 13% 65%, 17% 20%, 22% 75%, 26% 10%, 31% 85%, 35% 25%, 40% 90%, 44% 35%, 49% 70%, 53% 15%, 58% 80%, 62% 30%, 67% 95%, 71% 40%, 75% 85%, 80% 20%, 85% 75%, 89% 35%, 93% 90%, 97% 25%, 100% 70%, 100% 100%, 0 100%);
+    height: 200px;
+    background-image: url('/images/PapperHero.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 20;
 }
 
 /* Десктоп - большие экраны */
@@ -222,27 +224,42 @@
 
 /* Планшеты */
 @media (max-width: 1024px) {
-    .torn-paper-top,
+    .torn-paper-top {
+        height: 60px;
+        top: 0;
+    }
+    
     .torn-paper-bottom {
-        height: 20px;
+        height: 150px;
+        bottom: -8px;
     }
 }
 
 /* Мобильные устройства */
 @media (max-width: 768px) {
-    .torn-paper-top,
-    .torn-paper-bottom {
-        height: 15px;
+    .torn-paper-top {
+        height: 40px;
+        top: 0;
         z-index: 5;
+    }
+    
+    .torn-paper-bottom {
+        height: 60px;
+        bottom: -8px;
     }
 }
 
 /* Маленькие мобильные */
 @media (max-width: 480px) {
-    .torn-paper-top,
-    .torn-paper-bottom {
-        height: 10px;
+    .torn-paper-top {
+        height: 30px;
+        top: 0;
         z-index: 5;
+    }
+    
+    .torn-paper-bottom {
+        height: 50px;
+        bottom: -1px;
     }
 }
 
@@ -267,6 +284,13 @@
     max-width: 500px;
 }
 
+/* Увеличенный контейнер для фото */
+.rso-photo-container-large {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}
+
 /* Заголовок */
 .rso-title {
     font-size: 3rem;
@@ -287,6 +311,10 @@
 @media (min-width: 1200px) {
     .rso-photo-container {
         max-width: 600px;
+    }
+    
+    .rso-photo-container-large {
+        max-width: 800px;
     }
     
     .rso-title {
@@ -317,6 +345,10 @@
         max-width: 400px;
     }
     
+    .rso-photo-container-large {
+        max-width: 500px;
+    }
+    
     .rso-title {
         font-size: 2.5rem;
     }
@@ -334,11 +366,16 @@
 @media (max-width: 768px) {
     .rso-info-section {
         min-height: auto;
-        padding: 3rem 0;
+        padding: 4rem 0 8rem 0;
     }
     
     .rso-photo-container {
         max-width: 350px;
+        margin-bottom: 2rem;
+    }
+    
+    .rso-photo-container-large {
+        max-width: 450px;
         margin-bottom: 2rem;
     }
     
@@ -364,11 +401,15 @@
 /* Маленькие мобильные */
 @media (max-width: 480px) {
     .rso-info-section {
-        padding: 2rem 0;
+        padding: 3rem 0 7rem 0;
     }
     
     .rso-photo-container {
         max-width: 280px;
+    }
+    
+    .rso-photo-container-large {
+        max-width: 350px;
     }
     
     .rso-title {
@@ -570,16 +611,6 @@
 
 /* Responsive adjustments for torn paper */
 @media (max-width: 768px) {
-    .torn-paper-bottom {
-        height: 60px;
-        bottom: -8px;
-    }
-    
-    .paper-transition {
-        height: 40px;
-        margin: -2px 0 -2px 0;
-    }
-    
     .content-section-first {
         padding-top: 3rem;
     }
@@ -615,11 +646,6 @@
 }
 
 @media (max-width: 480px) {
-    .torn-paper-bottom {
-        height: 50px;
-        bottom: -6px;
-    }
-    
     .hero-section h1 {
         font-size: 2rem;
         line-height: 1.1;
@@ -637,6 +663,29 @@
     /* Мобильное меню */
     .mobile-menu-button {
         display: block;
+    }
+    
+    /* Улучшенные стили для бургер меню */
+    .mobile-menu-button div div {
+        height: 4px !important;
+        border-radius: 9999px !important;
+    }
+    
+    /* Принудительные стили для всех линий бургера */
+    [data-hamburger-icon] div,
+    [data-close-icon] div,
+    .space-y-2 > div,
+    .space-y-1\.5 > div {
+        height: 4px !important;
+        width: 24px !important;
+        border-radius: 9999px !important;
+        background-color: white !important;
+    }
+    
+    [data-hamburger-icon] {
+        gap: 8px !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
 }
 

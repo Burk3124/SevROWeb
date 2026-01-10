@@ -13,7 +13,7 @@
                 <div class="flex items-center space-x-8">
                     <a href="#" class="text-white/90 hover:text-white transition-colors font-medium">О нас</a>
                     <a href="#" class="text-white/90 hover:text-white transition-colors font-medium">Новости</a>
-                    <a href="#" class="text-white/90 hover:text-white transition-colors font-medium">Направления</a>
+                    <a href="{{ route('directions') }}" class="text-white/90 hover:text-white transition-colors font-medium">Направления</a>
                     <a href="#" class="text-white/90 hover:text-white transition-colors font-medium">Галерея</a>
                     <a href="#" class="text-white/90 hover:text-white transition-colors font-medium">Вопросы</a>
                 </div>
@@ -85,15 +85,15 @@
                     <!-- Hamburger icon -->
                     <div class="w-6 h-6">
                         <!-- Линии гамбургера -->
-                        <div x-show="!mobileMenuOpen" class="space-y-1">
-                            <div class="w-6 h-0.5 bg-white transition-all"></div>
-                            <div class="w-6 h-0.5 bg-white transition-all"></div>
-                            <div class="w-6 h-0.5 bg-white transition-all"></div>
+                        <div x-show="!mobileMenuOpen" data-hamburger-icon class="space-y-2">
+                            <div class="w-6 h-1 bg-white transition-all rounded-full"></div>
+                            <div class="w-6 h-1 bg-white transition-all rounded-full"></div>
+                            <div class="w-6 h-1 bg-white transition-all rounded-full"></div>
                         </div>
                         <!-- Крестик -->
-                        <div x-show="mobileMenuOpen" class="relative">
-                            <div class="absolute top-2.5 w-6 h-0.5 bg-white transform rotate-45"></div>
-                            <div class="absolute top-2.5 w-6 h-0.5 bg-white transform -rotate-45"></div>
+                        <div x-show="mobileMenuOpen" data-close-icon class="relative">
+                            <div class="absolute top-2.5 w-6 h-1 bg-white transform rotate-45 rounded-full"></div>
+                            <div class="absolute top-2.5 w-6 h-1 bg-white transform -rotate-45 rounded-full"></div>
                         </div>
                     </div>
                 </button>
@@ -113,7 +113,7 @@
             <div class="px-4 py-6 space-y-3" @click.away="mobileMenuOpen = false">
                 <a href="#" class="block text-gray-800 hover:text-blue-600 transition-colors py-2 px-3 rounded-lg hover:bg-blue-50">О нас</a>
                 <a href="#" class="block text-gray-800 hover:text-blue-600 transition-colors py-2 px-3 rounded-lg hover:bg-blue-50">Новости</a>
-                <a href="#" class="block text-gray-800 hover:text-blue-600 transition-colors py-2 px-3 rounded-lg hover:bg-blue-50">Направления</a>
+                <a href="{{ route('directions') }}" class="block text-gray-800 hover:text-blue-600 transition-colors py-2 px-3 rounded-lg hover:bg-blue-50">Направления</a>
                 <a href="#" class="block text-gray-800 hover:text-blue-600 transition-colors py-2 px-3 rounded-lg hover:bg-blue-50">Галерея</a>
                 <a href="#" class="block text-gray-800 hover:text-blue-600 transition-colors py-2 px-3 rounded-lg hover:bg-blue-50">Вопросы</a>
                 
