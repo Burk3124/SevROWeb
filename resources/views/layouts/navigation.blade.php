@@ -84,16 +84,11 @@
                     <span class="sr-only">Открыть меню</span>
                     <!-- Hamburger icon -->
                     <div class="w-6 h-6">
-                        <!-- Линии гамбургера -->
-                        <div x-show="!mobileMenuOpen" data-hamburger-icon class="space-y-2">
-                            <div class="w-6 h-1 bg-white transition-all rounded-full"></div>
-                            <div class="w-6 h-1 bg-white transition-all rounded-full"></div>
-                            <div class="w-6 h-1 bg-white transition-all rounded-full"></div>
-                        </div>
-                        <!-- Крестик -->
-                        <div x-show="mobileMenuOpen" data-close-icon class="relative">
-                            <div class="absolute top-2.5 w-6 h-1 bg-white transform rotate-45 rounded-full"></div>
-                            <div class="absolute top-2.5 w-6 h-1 bg-white transform -rotate-45 rounded-full"></div>
+                        <!-- Анимированные линии бургера -->
+                        <div data-hamburger-icon class="space-y-1">
+                            <div class="burger-line burger-line-1 transition-all"></div>
+                            <div class="burger-line burger-line-2 transition-all"></div>
+                            <div class="burger-line burger-line-3 transition-all"></div>
                         </div>
                     </div>
                 </button>

@@ -665,27 +665,70 @@
         display: block;
     }
     
-    /* Улучшенные стили для бургер меню */
-    .mobile-menu-button div div {
-        height: 4px !important;
-        border-radius: 9999px !important;
+    /* Стильный анимированный бургер */
+    .burger-line {
+        height: 3px;
+        width: 24px;
+        background: #ffffff;
+        border-radius: 2px;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transform-origin: center;
+        position: relative;
     }
     
-    /* Принудительные стили для всех линий бургера */
-    [data-hamburger-icon] div,
-    [data-close-icon] div,
-    .space-y-2 > div,
-    .space-y-1\.5 > div {
-        height: 4px !important;
-        width: 24px !important;
-        border-radius: 9999px !important;
-        background-color: white !important;
+    /* Позиционирование для анимации */
+    .burger-line-1 {
+        transform: translateY(0px);
     }
     
+    .burger-line-2 {
+        transform: translateY(0px);
+    }
+    
+    .burger-line-3 {
+        transform: translateY(0px);
+    }
+    
+    /* Когда меню открыто - трансформация в стрелку вверх */
+    [x-data] button[aria-expanded="true"] .burger-line-1 {
+        transform: translateY(11px) rotate(45deg);
+    }
+    
+    [x-data] button[aria-expanded="true"] .burger-line-2 {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    
+    [x-data] button[aria-expanded="true"] .burger-line-3 {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+    
+    /* Hover эффект - увеличение и легкое свечение */
+    button[data-mobile-menu-button]:hover .burger-line {
+        background: #e0f2fe;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+        transform: scaleY(1.2);
+    }
+    
+    /* Специальные hover эффекты для каждой линии */
+    button[data-mobile-menu-button]:hover .burger-line-1 {
+        transform: translateY(0px) scaleY(1.2) scaleX(1.05);
+    }
+    
+    button[data-mobile-menu-button]:hover .burger-line-2 {
+        transform: translateY(0px) scaleY(1.2) scaleX(0.9);
+    }
+    
+    button[data-mobile-menu-button]:hover .burger-line-3 {
+        transform: translateY(0px) scaleY(1.2) scaleX(1.05);
+    }
+    
+    /* Контейнер для линий */
     [data-hamburger-icon] {
-        gap: 8px !important;
-        display: flex !important;
-        flex-direction: column !important;
+        gap: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 

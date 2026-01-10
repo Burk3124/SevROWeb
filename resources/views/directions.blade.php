@@ -160,7 +160,7 @@
                 
                 <!-- Left side - Text content -->
                 <div class="flex-1 pr-4 max-w-6xl" style="min-width: 60%;">
-                    <h2 class="pedagogy-title text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                    <h2 class="pedagogy-title text-4xl lg:text-5xl font-bold text-white leading-tight">
                         Студенческие педагогические отряды
                     </h2>
                     
@@ -196,5 +196,196 @@
     <!-- Bottom paper effect -->
     <div class="paper-bottom-effect absolute bottom-0 left-0 w-full z-30"></div>
 </section>
+
+<!-- Педагогические отряды СевРО -->
+<section class="pedagogy-squads-section py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
+                Педагогические отряды СевРО
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Познакомьтесь с нашими педагогическими отрядами. Каждый отряд имеет свою уникальную историю и специализацию.
+            </p>
+        </div>
+
+        <!-- Squad Circles Grid -->
+        <div class="squad-circles-container">
+            <!-- First Row - 5 circles -->
+            <div class="squad-row flex justify-center items-center gap-8 mb-12">
+                <!-- Отряд 1 - Ассоль -->
+                <div class="squad-circle active" data-squad="assol">
+                    <img src="{{ asset('images/squads/assol.png') }}" alt="Отряд Ассоль" class="squad-logo">
+                </div>
+                
+                <!-- Отряд 2 - ШИПР -->
+                <div class="squad-circle active" data-squad="shipr">
+                    <img src="{{ asset('images/squads/shipr.png') }}" alt="Отряд ШИПР" class="squad-logo">
+                </div>
+                
+                <!-- Отряд 3 - Лев -->
+                <div class="squad-circle active" data-squad="lev">
+                    <img src="{{ asset('images/squads/lev.png') }}" alt="Отряд Лев" class="squad-logo">
+                </div>
+                
+                <!-- Отряд 4 - Немо -->
+                <div class="squad-circle active" data-squad="nemo">
+                    <img src="{{ asset('images/squads/nemo.png') }}" alt="Отряд Немо" class="squad-logo">
+                </div>
+                
+                <!-- Отряд 5 - Призрак -->
+                <div class="squad-circle active" data-squad="ghost">
+                    <img src="{{ asset('images/squads/ghost.png') }}" alt="Отряд Призрак" class="squad-logo">
+                </div>
+            </div>
+
+            <!-- Second Row - 4 circles (placeholders) -->
+            <div class="squad-row flex justify-center items-center gap-8">
+                <div class="squad-circle placeholder" data-squad="placeholder1">
+                    <div class="squad-placeholder">?</div>
+                </div>
+                
+                <div class="squad-circle placeholder" data-squad="placeholder2">
+                    <div class="squad-placeholder">?</div>
+                </div>
+                
+                <div class="squad-circle placeholder" data-squad="placeholder3">
+                    <div class="squad-placeholder">?</div>
+                </div>
+                
+                <div class="squad-circle placeholder" data-squad="placeholder4">
+                    <div class="squad-placeholder">?</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal для отрядов -->
+<div id="squadModal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle" class="modal-title"></h3>
+            <button id="closeModal" class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-squad-info">
+                <img id="modalImage" src="" alt="" class="modal-squad-image">
+                <div class="modal-squad-text">
+                    <p id="modalDescription" class="modal-description"></p>
+                    <div class="modal-actions">
+                        <a id="modalPublicLink" href="#" target="_blank" class="btn-public">
+                            Перейти в паблик
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+// Данные о отрядах
+const squadsData = {
+    assol: {
+        name: "Педагогический отряд «Ассоль»",
+        image: "{{ asset('images/squads/assol.png') }}",
+        description: "Отряд «Ассоль» - один из старейших педагогических отрядов Севастополя. Специализируется на морской тематике и воспитании патриотизма у детей.",
+        publicLink: "https://vk.com/assol_sevro"
+    },
+    shipr: {
+        name: "Педагогический отряд «ШИПР»",
+        image: "{{ asset('images/squads/shipr.png') }}",
+        description: "Отряд «ШИПР» известен своими инновационными подходами к детскому образованию и активной спортивной деятельностью.",
+        publicLink: "https://vk.com/shipr_sevro"
+    },
+    lev: {
+        name: "Педагогический отряд «Лев»",
+        image: "{{ asset('images/squads/lev.png') }}",
+        description: "Отряд «Лев» - сильный и дружный коллектив, специализирующийся на развитии лидерских качеств у детей и подростков.",
+        publicLink: "https://vk.com/lev_sevro"
+    },
+    nemo: {
+        name: "Педагогический отряд «Немо»",
+        image: "{{ asset('images/squads/nemo.png') }}",
+        description: "Отряд «Немо» фокусируется на изучении морского дела и экологическом воспитании детей в летних лагерях.",
+        publicLink: "https://vk.com/nemo_sevro"
+    },
+    ghost: {
+        name: "Педагогический отряд «Призрак»",
+        image: "{{ asset('images/squads/ghost.png') }}",
+        description: "Отряд «Призрак» известен своими творческими программами и необычными подходами к организации детского досуга.",
+        publicLink: "https://vk.com/ghost_sevro"
+    }
+};
+
+// Инициализация модалов
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('squadModal');
+    const closeModal = document.getElementById('closeModal');
+    const squadCircles = document.querySelectorAll('.squad-circle.active');
+    
+    // Проверяем, что модал существует
+    if (!modal) {
+        console.error('Модальное окно не найдено');
+        return;
+    }
+    
+    // Убедимся, что модал скрыт по умолчанию
+    modal.classList.add('hidden');
+    
+    // Открытие модала
+    squadCircles.forEach(circle => {
+        circle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const squadId = this.dataset.squad;
+            const squadData = squadsData[squadId];
+            
+            if (squadData) {
+                // Заполняем данные модала
+                document.getElementById('modalTitle').textContent = squadData.name;
+                document.getElementById('modalImage').src = squadData.image;
+                document.getElementById('modalImage').alt = squadData.name;
+                document.getElementById('modalDescription').textContent = squadData.description;
+                document.getElementById('modalPublicLink').href = squadData.publicLink;
+                
+                // Показываем модал
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    // Функция закрытия модала
+    function closeModalHandler() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Закрытие модала по клику на крестик
+    if (closeModal) {
+        closeModal.addEventListener('click', closeModalHandler);
+    }
+    
+    // Закрытие по клику на оверлей
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModalHandler();
+        }
+    });
+    
+    // Закрытие по Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModalHandler();
+        }
+    });
+});
+</script>
+@endpush
 
 @endsection
